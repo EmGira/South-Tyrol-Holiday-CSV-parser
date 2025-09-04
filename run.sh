@@ -1,0 +1,1 @@
+python parser.py holidays.csv new.csv
