@@ -17,14 +17,18 @@ with open(sys.argv[1], 'r', encoding='cp1252') as csv_file:
     if csv_reader:  
         
         first_row = csv_reader[0]
-        start_date = datetime.strptime(first_row["Date"], "%d.%m.%Y")
+        start_date = datetime.strptime(first_row["Start"], "%d.%m.%Y")
 
         last_row = csv_reader[-1]
         end_date = datetime.strptime(last_row["End"], "%d.%m.%Y")
     
 
     for line in csv_reader:
-        start = datetime.strptime(line["Date"], "%d.%m.%Y")
+
+        if line["Start"].startswith("#"):
+         continue
+
+        start = datetime.strptime(line["Start"], "%d.%m.%Y")
         stop = datetime.strptime(line["End"], "%d.%m.%Y")
         school_holidays.append((start, stop))
     
@@ -36,6 +40,10 @@ with open(sys.argv[2], 'r', encoding='cp1252') as csv_file:
     
 
     for line in csv_reader:
+
+        if line["Date"].startswith("#"):
+         continue
+        
         start = datetime.strptime(line["Date"], "%d.%m.%Y")
         stop = datetime.strptime(line["Date"], "%d.%m.%Y")
         work_holidays.append((start, stop))
