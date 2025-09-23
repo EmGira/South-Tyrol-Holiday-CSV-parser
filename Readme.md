@@ -3,7 +3,7 @@
 Run the parser script with the following command:
 
 ```bash
-python parser.py .\school-holidays.csv .\work-holidays.csv parsedData.csv
+python parser.py .\references/school-holidays.csv .\references/work-holidays.csv parsedData.csv
 ```
 
 ## Data sources
